@@ -455,7 +455,7 @@ var resizePizzas = function(size) {
     //Move these outside of the for loop
     var dx = determineDx(listOfPizzaContainers[0]), size);
     var newwidth = (listOfPizzaContainers[0].offsetWidth + dx) + 'px'
-    for (var i = 0; i < listOfPizzaContainers.length i++) {
+    for (var i = 0; i < listOfPizzaContainers.length; i++) {
       listOfPizzaContainers.style.width = newwidth
     }
   }
