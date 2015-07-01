@@ -449,14 +449,14 @@ var resizePizzas = function(size) {
   }
 
   //Do this once and not mutiple times in a for loop
-  var listOfPizzaContainers = document.querySelectorAll(".randomPizzaContainer") 
+  var listOfPizzaContainers = document.getElementsByClassName("randomPizzaContainer");
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     //Move these outside of the for loop
     var dx = determineDx(listOfPizzaContainers[0], size);
-    var newwidth = (listOfPizzaContainers[0].offsetWidth + dx) + 'px'
+    var newwidth = (listOfPizzaContainers[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < listOfPizzaContainers.length; i++) {
-      listOfPizzaContainers.style.width = newwidth
+      listOfPizzaContainers.style.width = newwidth;
     }
   }
 
@@ -507,7 +507,7 @@ function updatePositions() {
 
   var savedScrollTop = document.body.scrollTop;
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((savedScrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
@@ -526,8 +526,8 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-var pizzaElement = document.createElement("img")
-pizzaElement.className = "mover"
+var pizzaElement = document.createElement("img");
+pizzaElement.className = "mover";
 pizzaElement.src = "images/pizza.png";
 pizzaElement.style.height = "100px";
 pizzaElement.style.width = "73.333px";

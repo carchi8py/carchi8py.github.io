@@ -1,3 +1,26 @@
+### How to run
+1. Use Google Chrome
+1. Go to <a href="http://carchi8py.github.io/opt/">portfolio site </a>
+1. Copy and paste the link into  <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> and Analyze
+1. Repeate on each page
+
+### 60 Frame per second
+1. Use Google Chrome
+1. Go to <a href="http://carchi8py.github.io/opt/">portfolio site </a>
+1. Click on the pizza page
+1. In chrome open up Dev Tools and view the Console Log. You sould see all times are resulting in faster than 60 frames a seconds
+
+
+
+
+
+
+
+
+
+
+
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
