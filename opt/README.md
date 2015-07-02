@@ -11,8 +11,19 @@
 1. In chrome open up Dev Tools and view the Console Log. You sould see all times are resulting in faster than 60 frames a seconds
 
 
+### Optimization Made
 
+For all pages critical resouces were cot
+1. Style.css was inlined
+2. Google Analytics was async'd
+3. All Images were optimized
 
+For Index.html Google font was removed
+
+For Pizza.html a view port was added
+
+For main.js Elements were moved out of foor loop.
+The Scroll and event Listener function where modified to speed up rendering
 
 
 

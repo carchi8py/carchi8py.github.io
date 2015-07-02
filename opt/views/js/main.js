@@ -456,7 +456,7 @@ var resizePizzas = function(size) {
     var dx = determineDx(listOfPizzaContainers[0], size);
     var newwidth = (listOfPizzaContainers[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < listOfPizzaContainers.length; i++) {
-      listOfPizzaContainers.style.width = newwidth;
+      listOfPizzaContainers[i].style.width = newwidth;
     }
   }
 
@@ -535,7 +535,7 @@ pizzaElement.style.width = "73.333px";
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 48; i++) {
     var elem = pizzaElement.cloneNode(true);
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
