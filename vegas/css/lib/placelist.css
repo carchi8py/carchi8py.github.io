@@ -1,0 +1,176 @@
+/*
+ * Based on "CSS3 Hello Bar" by Martin Ivanov (http://wemakesites.net/)
+ **/
+
+:root .placeslist,
+.placebar-button,
+.placebar-button span {
+    display: block;
+    transform-style: preserve-3d;
+}
+
+.placeslist,
+.placeslist * {
+    margin: 0;
+    padding: 0;
+}
+
+.placeslist > div,
+.placebar-button span {
+    line-height: 48px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.74902);
+    background:#fafafa;
+    transition: transform 300ms ease-in-out;
+    box-shadow: 0 3px 10px #8c8470;
+}
+
+.placeslist,
+.placeslist input {
+    display: none;
+}
+
+.placeslist {
+    z-index: 1;
+    color: #000;
+    cursor: default;
+    height: 0;
+    max-height: 90%;
+    margin: 0 0.5em;
+}
+
+ .placeslist > div {
+    transform: translateY(-150%);
+    padding: 0 64px;
+    font-size: 12px;
+}
+
+.placeslist > div > div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-height: 2.5em;
+    padding: 1em 0;
+}
+
+.placebar-button,
+.place {
+    float: right;
+    margin: 2.7rem 1em 0 0;
+}
+
+.place .icon-location:before {
+  position: absolute;
+  top: 0.5em;
+  right: 0.3em;
+}
+
+.placebar-button span {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    color: #e8abab;
+}
+
+.placeslist input ~ .placebar-button span:first-child {
+    box-shadow: none;
+    background: none;
+}
+
+.placeslist input:not(:checked) ~ .placebar-button span:first-child {
+    opacity: 0;
+}
+
+.placeslist input:checked ~ .placebar-button span:first-child {
+    opacity: 1;
+    transition: opacity 300ms 300ms ease-in-out;
+    position: fixed;
+    transform: translateZ(1em);
+}
+
+.placeslist input:not(:checked) ~ .placebar-button span:last-child {
+    transform: translateY(-51px);
+}
+
+.placeslist input:checked ~ .placebar-button span:last-child {
+    transform: translateY(-100px);
+}
+
+.placeslist input:checked ~  div {
+    transform: translateY(2.7rem);
+}
+
+.location-title {
+    color: #333;
+    font: 400 2rem/64px "Roboto";
+}
+
+.placeslist ul {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.placeslist ul::-webkit-scrollbar {
+    width: 0.5em;
+    overflow: visible;
+}
+
+.placeslist ul::-webkit-scrollbar-thumb {
+    background-color: #999;
+    min-height: 28px;
+}
+
+.placeslist li {
+    min-height: 48px;
+}
+
+.placeslist li hr {
+    background: #e6e6e6;
+    border: none;
+    height: 1px;
+    margin: 8px 0;
+}
+
+.placeslist a {
+    color: #666;
+    font-size: 1.25rem;
+    font-family: "Roboto", "Helvetica Nueue", Helvetica, Arial, Sans-serif;
+}
+
+@media only screen and (min-width: 40.063em) {
+
+    .placeslist.fixed {
+        z-index: 1;
+        width: 20vw;
+        height: auto;
+        max-width: 300px;
+        position: absolute;
+        margin: 0;
+    }
+
+    .placebar-button.place {
+        display: none;
+    }
+
+    .placeslist > div {
+        box-shadow: 3px 0 4px rgba(0, 0, 0, 0.15);
+        transform: translateY(40px);
+        padding: 0 1.5em;
+        height: calc(100% - 45px);
+    }
+
+    .placeslist > div a {
+        display: block;
+        text-align: start;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 0 1.0em;
+        font-size: 0.9em;
+    }
+}

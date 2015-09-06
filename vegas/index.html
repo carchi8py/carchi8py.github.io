@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Las Vegas Map</title>
+	<link rel="stylesheet" href="css/map.css">
+	<link rel="stylesheet" href="css/lib/foundation.min.css">
+	<link rel="stylesheet" href="css/lib/placelist.css">
+	<link rel="stylesheet" href="css/mycss.css">
+</head>
+<body>
+	<nav id="topbar" class="fixed topbar">
+		<!-- Search Bar -->
+		<div id="search-container" class="full-width collapse postfix small-centered">
+			<div class="columns small-9 medium-4">
+				<input type="text" placeholder="Search" data-bind="textInput:query">
+			</div>
+			<div class="large-2 end small-3 columns">
+				<a href="#" class="button postfix" data-bind="click:searched">Search</a>
+			</div>
+			<dl id="filter-menu" class="columns sub-nav medium-5" role="menu" title="Filter Menu List">
+				<dt>Show:</dt>
+				<dd role="menuitem">
+					<a data-bind="click:showAllLocations" href="#">All</a>
+				</dd>
+				<dd role="menuitem">
+					<a data-bind="click:showCasualLocations" href="#"><span>Casual Restraunt</span></a>
+				</dd>
+				<dd role="menuitem">
+					<a data-bind="click:showDinningLocations" href="#"><span>Fine Dinning</span></a>
+				</dd>
+				<dd role="menuitem">
+					<a data-bind="click:showShowsLocations" href="#"><span>Shows</span></a>
+				</dd>
+			</dl>
+		</div>
+		<!-- Filter Bar -->
+	</nav>
+	<div class="hidden placeslist fixed">
+		<input type="checkbox" id="placeslist-switcher"/>
+		<label id="place" class="placebar-button" for="placeslist-switcher">
+			<span><i class="icon-cancel"></i></span>
+			<span><i class="icon-location"></i></span>
+		</label>
+		<div>
+			<div>
+				<h1 class="location-title"><i class="icon-location"></i> Locations</h1>
+				<ul data-bind="foreach: locations">
+					<li><a data-bind="text: title, click: $parent.openInfoWindow" href="#"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="map">
+	</div>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0upBSIJ83gXpeSbMPtkfnn355wiRgvjQ&callback=initMap">
+	</script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lib/knockout-3.3.0.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+</body>
+</html>
