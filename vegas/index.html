@@ -3,37 +3,46 @@
 <head>
 	<title>Las Vegas Map</title>
 	<link rel="stylesheet" href="css/map.css">
+	<link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/lib/foundation.min.css">
 	<link rel="stylesheet" href="css/lib/placelist.css">
 	<link rel="stylesheet" href="css/mycss.css">
 </head>
 <body>
 	<nav id="topbar" class="fixed topbar">
-		<!-- Search Bar -->
 		<div id="search-container" class="full-width collapse postfix small-centered">
+
+			<!-- Search Bar -->
 			<div class="columns small-9 medium-4">
 				<input type="text" placeholder="Search" data-bind="textInput:query">
 			</div>
 			<div class="large-2 end small-3 columns">
 				<a href="#" class="button postfix" data-bind="click:searched">Search</a>
 			</div>
+
+			<!-- Filter Bar -->
 			<dl id="filter-menu" class="columns sub-nav medium-5" role="menu" title="Filter Menu List">
-				<dt>Show:</dt>
+				<dt id="menudark">Show:</dt>
 				<dd role="menuitem">
-					<a data-bind="click:showAllLocations" href="#">All</a>
+					<a id="menudark" data-bind="click:showAllLocations" href="#">All</a>
 				</dd>
 				<dd role="menuitem">
-					<a data-bind="click:showCasualLocations" href="#"><span>Casual Restraunt</span></a>
+					<a id="menudark" data-bind="click:showCasualLocations" href="#"><span>Casual Restraunt</span></a>
 				</dd>
 				<dd role="menuitem">
-					<a data-bind="click:showDinningLocations" href="#"><span>Fine Dinning</span></a>
+					<a id="menudark" data-bind="click:showDinningLocations" href="#"><span>Fine Dinning</span></a>
 				</dd>
 				<dd role="menuitem">
-					<a data-bind="click:showShowsLocations" href="#"><span>Shows</span></a>
+					<a id="menudark" data-bind="click:showShowsLocations" href="#"><span>Shows</span></a>
+				</dd>
+				<dd role="menuitem">
+					<a id="menudark" data-bind="click:showShopLocations" href="#"><span>Shops</span></a>
+				</dd>
+				<dd role="menuitem">
+					<a id="menudark" data-bind="click:showAttractionsLocations" href="#"><span>Attractions</span></a>
 				</dd>
 			</dl>
 		</div>
-		<!-- Filter Bar -->
 	</nav>
 	<div class="hidden placeslist fixed">
 		<input type="checkbox" id="placeslist-switcher"/>
@@ -58,6 +67,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/lib/knockout-3.3.0.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-2.1.4.min.js.js"></script>
 	<script type="text/javascript" src="js/myApp.js"></script>
 </body>
 </html>

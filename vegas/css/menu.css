@@ -1,0 +1,89 @@
+#filter {
+	display: none;
+}
+
+#menudark {
+	color: black;
+}
+
+#details-button {
+	background-color: rgba(0, 0, 0, 0);
+	padding-top: 0.5rem;
+	width: 2.3125rem;
+	height: 2.3125rem;
+	position: absolute;
+	z-index: 2;
+	left: 2px;
+	color: #C8C8C8;
+	margin: 0;
+}
+
+#details-button:focus,
+#details-button:hover {
+	color: #000;	
+	outline-color: rgba(0, 0, 0, 0);
+}
+
+
+#filter-menu {
+	width: 94vw;	
+	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background: #FAFAFA;
+	box-shadow: 0 3px 20px #8C8470;
+	transition: margin 300ms ease-in-out;
+	z-index: 2;
+}
+
+#filter-menu dt,
+#filter-menu dd a{
+	font-size: 1rem;
+}
+
+#filter-menu i {
+	display: none;
+}
+
+@media only screen and (max-width: 40.062em) {
+	#filter:not(:checked) ~ #filter-menu {
+		margin-top: -200%;
+	}
+
+	#filter(:checked) ~ #filter-menu {
+		margin-top: 0%;
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	#filter-menu {
+		float: right;
+		display: block;
+		width: auto;
+		max-width: 50%;
+		height: auto;
+		background: none;
+		box-shadow: none;
+		margin-top: 0;
+	}
+
+	#filter-menu dt,
+	#filter-menu dd{
+		font-size: 0.875rem;
+	}
+
+	#filter-menu i {
+		display: inline;
+	}
+
+	#filter-menu span {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 1025px) {
+	#filter-menu span {
+		display: inline;
+	}
+}
