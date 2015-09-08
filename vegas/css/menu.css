@@ -61,16 +61,19 @@
 		float: right;
 		display: block;
 		width: auto;
-		max-width: 50%;
+		max-width: 90%;
 		height: auto;
 		background: none;
 		box-shadow: none;
 		margin-top: 0;
+		margin-left: 0;
 	}
 
 	#filter-menu dt,
 	#filter-menu dd{
 		font-size: 0.875rem;
+		margin-left: 0;
+		-webkit-margin-start: -10px;
 	}
 
 	#filter-menu i {
