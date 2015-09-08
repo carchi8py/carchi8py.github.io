@@ -12,7 +12,11 @@ var Location = function(title, latitude, longitude, icon, type, foursquare) {
 	self.fqHereNow = ko.observable()
 	self.fqBestPhoto = ko.observable()
 	self.fqOpenNow = ko.observable()
-	self.fqOpenWhen = ko.observable()
+	self.fqOpenWhen = []
+	self.fqPhoto2 = ko.observable()
+	self.fqPhoto3 = ko.observable()
+	self.fqPhoto4 = ko.observable()
+	self.fqPhoto5 = ko.observable()
 	self.content = '<h2 class="info-title">' + title + self.fqRating() + '</h2>'
 	self.latitude = ko.observable(latitude);
 	self.longitude = ko.observable(longitude);
@@ -29,13 +33,33 @@ var Location = function(title, latitude, longitude, icon, type, foursquare) {
 	self.infoWindow = function() {
 		console.log('print other stuff')
 		console.log(self.fqRating())
-		self.content1 = '<h3 class="info-title">' + title + '</h3>';
-		self.content2 = '<b>Rating:</b>' + self.fqRating() + '<br>';
-		self.content3 = '<b>People here now:</b> ' + self.fqHereNow() + '<br>';
-		self.content4 = '<img src="' + self.fqBestPhoto().prefix + '240x240' + self.fqBestPhoto().suffix + '">'
-		self.content = self.content1 + self.content2 + self.content3 + self.content4
+		self.content1 = '<center><h3 class="info-title">' + title + '</h3></center>';
+		self.content2 = '<b>Rating: </b>' + self.fqRating() + '<br>';
+		self.content3 = '<b>People here now: </b> ' + self.fqHereNow() + '<br><br>';
+		self.timeinfo = ''
+		if (self.fqOpenWhen.length > 0)
+		{
+			self.fqOpenWhen.forEach(function(item){
+				console.log(item)
+				self.timeinfo = self.timeinfo + '<b>' + item.days + ': </b>'
+				item.open.forEach(function(openItem) {
+					self.timeinfo = self.timeinfo + openItem.renderedTime + ' '
+				})
+				self.timeinfo = self.timeinfo + '<br>'
+			})
+		} else {
+			self.timeinfo = "No Fourquare Opening time information<br>"
+		}
+		self.content4 = '<a href="https://foursquare.com/v/' + self.foursquare() + '"><img src="' + self.fqBestPhoto().prefix + '100x100' + self.fqBestPhoto().suffix + '">'
+		self.content5 = '<img src="' + self.fqPhoto2().prefix + '100x100' + self.fqPhoto2().suffix + '">'
+		self.content6 = '<img src="' + self.fqPhoto3().prefix + '100x100' + self.fqPhoto3().suffix + '">'
+		self.content7 = '<img src="' + self.fqPhoto4().prefix + '100x100' + self.fqPhoto4().suffix + '">'
+		self.content8 = '<img src="' + self.fqPhoto5().prefix + '100x100' + self.fqPhoto5().suffix + '"></a><br>'
+		self.content = self.content1 + self.content2 + self.timeinfo + self.content3 + self.content4 + self.content5 + self.content6 + self.content7 + self.content8
+		var latLng = self.marker.getPosition();
 		infowindow.setContent(self.content);
 		infowindow.open(map, self.marker);
+		map.setCenter(latLng);
 	}
 
 	google.maps.event.addListener(self.marker, 'click', function() {
@@ -59,6 +83,13 @@ var ViewModel = function() {
 			new Location('Nine Fine Irishmen', 36.1021012, -115.1737873, 'img/lib/bar.png', 'Casual', '41326e00f964a520b7141fe3'),
 			new Location('Fat Tuesday', 36.1206347,-115.172078, 'img/lib/bar_coktail.png', 'Casual', '4c0063009cf52d7fa5b713e7'),
 			new Location("Dick's Last Resort", 36.0994759,-115.1756075, 'img/lib/restaurant.png', 'Casual', '4abc14aaf964a5204b8620e3'),
+			new Location("Bouchon Bistro", 36.12116583662729,-115.16957519059744, 'img/lib/restaurant.png', 'Casual', '4a5b64a8f964a52012bb1fe3'),
+			new Location("db Brasserie", 36.12221069887141,-115.17025840471311, 'img/lib/restaurant.png', 'Casual', '53507ffb498e9680b3965881'),
+			new Location("FukuBurger", 36.10649555455546,-115.17238330704077, 'img/lib/restaurant.png', 'Casual', '5515acfe498ee91ac6ebf293'),
+			new Location("Jaleo", 36.1096522950836,-115.17376130151159, 'img/lib/restaurant_mexican.png', 'Casual', '4d014e1f85c6a14363095237'),
+			new Location("Mizumi", 36.126557328330485,-115.16704496962676, 'img/lib/japanese-food.png', 'Casual', '4fa4999de4b00c5843b54749'),
+			new Location("Spago By Wolfgang Puck", 36.118686226131665,-115.17593828901438, 'img/lib/restaurant.png', 'Casual', '49dea637f964a520a6601fe3'),
+			new Location("Yusho Japanese Grill & Noodle House", 36.104773,-115.173614, 'img/lib/japanese-food.png', 'Casual', '5340a412498e605fae439e85'),
 			//Shows
 			new Location('Cirque du Soleil: Zarkana', 36.1060481, -115.1773626, 'img/lib/theater.png', 'Shows', '50818420e4b0a7491c0e692b'),
 			new Location('Cirque du Soleil: Zumanity', 36.102895, -115.1748606, 'img/lib/stripclub2.png', 'Shows', '4a70e3c2f964a520b3d81fe3'),
@@ -74,6 +105,21 @@ var ViewModel = function() {
 			new Location('Laugh Factory', 36.0993853,-115.1712763, 'img/lib/comedyclub.png', 'Shows', '4f83c4bae4b0107aa18cf3be'),
 			//Fine Dinning
 			new Location('Picasso', 36.1133574, -115.1750467, 'img/lib/restaurant.png', 'Dinning', '4b42b0f0f964a520ced825e3'),
+			new Location('Craftsteak', 36.10272318912341, -115.16836881637573, 'img/lib/restaurant_steakhouse.png', 'Dinning', '4a8437c4f964a520f0fb1fe3'),
+			new Location('Jean Georges Steakhouse', 36.10740403456521, -115.1775312423706, 'img/lib/restaurant_steakhouse.png', 'Dinning', '4b29683ff964a5205c9e24e3'),
+			new Location('Shibuya', 36.102411122843996, -115.16959190368652, 'img/lib/japanese-food.png', 'Dinning', '4b120b95f964a5208d8823e3'),
+			new Location('Restaurant Guy Savoy', 36.11511301421067, -115.17445029650867, 'img/lib/restaurant.png', 'Dinning', '49dea64cf964a520a7601fe3'),
+			new Location('Aureole Wine Lounge', 36.090933157496636, -115.1762866973877, 'img/lib/restaurant.png', 'Dinning', '4abae7faf964a5205a8320e3'),
+			new Location('Twist by Pierre Gagnaire', 36.10618617477056, -115.17454326152802, 'img/lib/restaurant.png', 'Dinning', '4b454a7af964a520fa0926e3'),
+			new Location('Joël Robuchon', 36.10279329326528, -115.16982415862289, 'img/lib/restaurant.png', 'Dinning', '51b928d60b6b311ab315a38e'),
+			new Location('Bartolotta Ristorante di Mare', 36.126193954266554, -115.16740322113037, 'img/lib/restaurant_italian.png', 'Dinning', '4b3d53d6f964a520799225e3'),
+			new Location('Carnevino', 36.12521066349459, -115.16859668647233, 'img/lib/restaurant_steakhouse.png', 'Dinning', '4a7f8759f964a5204ff41fe3'),
+			new Location('CUT By Wolfgang Puck', 36.12366801631726, -115.16940149185976, 'img/lib/restaurant_steakhouse.png', 'Dinning', '4a3eab08f964a52043a31fe3'),
+			new Location("L'Atelier de Joël Robuchon", 36.10277640687448, -115.16982415862289, 'img/lib/restaurant.png', 'Dinning', '4b2f06cbf964a5202ae924e3'),
+			new Location("Le Cirque", 36.113315579778664, -115.1746703114034, 'img/lib/restaurant.png', 'Dinning', '4b3e46adf964a520899a25e3'),
+			new Location("Michael Mina", 36.11239662894296, -115.17731666564941, 'img/lib/restaurant_fish.png', 'Dinning', '4b46ac72f964a520a32626e3'),
+			new Location("Sage", 36.107781213239754, -115.17609461467109, 'img/lib/restaurant.png', 'Dinning', '4b293a50f964a5204a9b24e3'),
+			new Location("SW Steakhouse", 36.12618, -115.167086, 'img/lib/restaurant_steakhouse.png', 'Dinning', '4ab2f918f964a520296d20e3'),
 			//Shops
 			new Location('Coca Cola Store', 36.1037712, -115.172412, 'img/lib/mural.png', 'Shop', '4b803bbdf964a520285f30e3'),
 			new Location("M&M's World", 36.1033984, -115.172469, 'img/lib/mural.png', 'Shop', '4ba53706f964a520f2ec38e3'),
@@ -192,8 +238,24 @@ var ViewModel = function() {
 			location.fqRating(data.response.venue.rating);
 			location.fqHereNow(data.response.venue.hereNow.count);
 			location.fqBestPhoto(data.response.venue.bestPhoto);
-			location.fqOpenNow(data.response.venue.popular.status);
-			location.fqOpenWhen(data.response.venue.popular.timeframes);
+			location.fqPhoto2(data.response.venue.photos.groups[0].items[1])
+			location.fqPhoto3(data.response.venue.photos.groups[0].items[2])
+			location.fqPhoto4(data.response.venue.photos.groups[0].items[3])
+			location.fqPhoto5(data.response.venue.photos.groups[0].items[4])
+			//Some locations do not have a Status, so we'll put an empty string
+			try {
+				location.fqOpenNow(data.response.venue.popular.status);
+			}
+			catch(err) {
+				location.fqOpenNow('')
+			}
+			//Some locations do not have a time table, so we'll put an empty string
+			try {
+				location.fqOpenWhen = data.response.venue.popular.timeframes;
+			}
+			catch(err) {
+				location.fqOpenWhen = []
+			}
 		});
 	};
 };
@@ -201,8 +263,8 @@ var ViewModel = function() {
 var map, infowindow;
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 36.115, lng: -115.172},
-		zoom: 16
+		center: {lat: 36.110, lng: -115.172},
+		zoom: 15
 	});
 	infowindow = new google.maps.InfoWindow();
 	viewModel = new ViewModel();
