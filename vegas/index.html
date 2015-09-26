@@ -13,15 +13,15 @@
 		<div id="search-container" class="full-width collapse postfix small-centered">
 
 			<!-- Search Bar -->
-			<div class="columns small-7 medium-2">
+			<div class="columns small-8 medium-8 large-3">
 				<input type="text" placeholder="Search" data-bind="textInput:query">
 			</div>
-			<div class="large-2 end columns">
+			<div class="small-4 medium-4 large-2 end columns">
 				<a href="#" class="button postfix" data-bind="click:searched">Search</a>
 			</div>
 
 			<!-- Filter Bar -->
-			<dl id="filter-menu" class="columns sub-nav medium-5" role="menu" title="Filter Menu List">
+			<dl id="filter-menu" class="columns sub-nav show-for-large-up large-7" role="menu" title="Filter Menu List">
 				<dt id="menudark">Show:</dt>
 				<dd role="menuitem">
 					<a id="menudark" data-bind="click:showAllLocations" href="#">All</a>
@@ -44,7 +44,7 @@
 			</dl>
 		</div>
 	</nav>
-	<div class="hidden placeslist fixed">
+	<div class="hidden placeslist fixed show-for-large-up">
 		<input type="checkbox" id="placeslist-switcher"/>
 		<label id="place" class="placebar-button" for="placeslist-switcher">
 			<span><i class="icon-cancel"></i></span>
