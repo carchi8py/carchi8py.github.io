@@ -279,6 +279,8 @@ var ViewModel = function() {
 			catch(err) {
 				location.fqOpenWhen = [];
 			}
+		}).fail(function() {
+			alert("Unable to connect to Foursquare");
 		});
 	};
 };

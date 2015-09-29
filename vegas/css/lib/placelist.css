@@ -143,7 +143,7 @@
     font-family: "Roboto", "Helvetica Nueue", Helvetica, Arial, Sans-serif;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 1025px) {
 
     .placeslist.fixed {
         z-index: 1;
