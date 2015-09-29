@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/lib/foundation.min.css">
 	<link rel="stylesheet" href="css/lib/placelist.css">
+	<link rel="stylesheet" href="css/lib/icons.css">
 	<link rel="stylesheet" href="css/mycss.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
 			</div>
 
 			<!-- Filter Bar -->
-			<dl id="filter-menu" class="columns sub-nav show-for-large-up large-7" role="menu" title="Filter Menu List">
+			<dl id="filter-menu" class="sub-nav large-7 collapse show-for-large-up" role="menu" title="Filter Menu List">
 				<dt id="menudark">Show:</dt>
 				<dd role="menuitem">
 					<a id="menudark" data-bind="click:showAllLocations" href="#">All</a>
@@ -44,21 +45,26 @@
 			</dl>
 		</div>
 	</nav>
-	<div class="hidden placeslist fixed show-for-large-up">
-		<input type="checkbox" id="placeslist-switcher"/>
-		<label id="place" class="placebar-button" for="placeslist-switcher">
-			<span><i class="icon-cancel"></i></span>
-			<span><i class="icon-location"></i></span>
-		</label>
-		<div>
-			<div>
-				<h1 class="location-title"><i class="icon-location"></i> Locations</h1>
-				<ul data-bind="foreach: locations">
-					<li><a data-bind="text: title, click: $parent.openInfoWindow" href="#"></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
+    <!-- Locations list START -->
+    <div class="hidden placeslist fixed" data-bind="css: { hidden: false }">
+        <input title="show places list" type="checkbox" id="placeslist-switcher"/>
+        <label class="place placebar-button" for="placeslist-switcher">
+            <span><i class="icon-cancel"></i></span>
+            <span><i class="icon-location"></i></span>
+        </label>
+        <div>
+            <div>
+                <h1 class="location-title">Locations</h1>
+                <ul data-bind="foreach: locations">
+                    <li><a data-bind="text: title, click: $parent.openInfoWindow" href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Locations list END -->
+
+
 	<div id="map">
 	</div>
 

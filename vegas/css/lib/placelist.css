@@ -66,14 +66,15 @@
 }
 
 .placebar-button span {
-    width: 5px;
-    height: 48px;
+    width: 48px;
+    height: 58px;
     font-size: 1.5rem;
-    padding-top: 0.5rem;
+    padding-top: 1.5rem;
     border-top: 0;
     border-radius: 0 0 4px 4px;
     cursor: pointer;
     color: #e8abab;
+}
 }
 
 .placeslist input ~ .placebar-button span:first-child {
