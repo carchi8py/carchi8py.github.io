@@ -91,6 +91,7 @@ FSsecret = ko.observable('TXY4D3TTKCUOXVGZEXLRCRHOPBEMLS0FBGSP2SVN14O52ZB2');
 var ViewModel = function() {
 	//To remeber the parent context
 	var self = this;
+	self.queryResultsShown = ko.observable(false);
 	self.query = ko.observable('');
 
 	myLocations = 		
@@ -161,6 +162,10 @@ var ViewModel = function() {
 		];
 	self.locations = ko.observableArray(myLocations.slice());
 
+	self.showResults = function() {
+		self.queryResultsShown(true);
+	}
+
 	self.openInfoWindow = function(obj) {
 		var location = self.getFoursquareVenue(obj);
 		//Stop Animation if we click on something else
@@ -168,6 +173,7 @@ var ViewModel = function() {
 			var currentLoc = parent.myLocations[x];
 			currentLoc.marker.setAnimation(null);
 		}
+		self.queryResultsShown(false);
 		obj.marker.setAnimation(google.maps.Animation.BOUNCE);
 		obj.infoWindow();
 	};
