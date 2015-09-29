@@ -121,6 +121,7 @@ var ViewModel = function() {
 			new Location('Thunder from Down Under', 36.0993095,-115.1759191, 'img/lib/stripclub2.png', 'Shows', '4b7cc2f0f964a5207da42fe3'),
 			new Location('Tournament of Kings', 36.0990753,-115.1755671, 'img/lib/theater.png', 'Shows', '4b22f5d9f964a520275124e3'),
 			new Location('Laugh Factory', 36.0993853,-115.1712763, 'img/lib/comedyclub.png', 'Shows', '4f83c4bae4b0107aa18cf3be'),
+			new Location('Penn & Teller', 36.118469129151535, -115.1871530121643, 'img/lib/magicshow.png', 'Shows', '4a76586df964a520e1e21fe3'),
 			//Fine Dinning
 			new Location('Picasso', 36.1133574, -115.1750467, 'img/lib/restaurant.png', 'Dinning', '4b42b0f0f964a520ced825e3'),
 			new Location('Craftsteak', 36.10272318912341, -115.16836881637573, 'img/lib/restaurant_steakhouse.png', 'Dinning', '4a8437c4f964a520f0fb1fe3'),
